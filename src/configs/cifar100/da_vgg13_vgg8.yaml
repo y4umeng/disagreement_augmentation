@@ -1,5 +1,5 @@
 EXPERIMENT:
-  NAME: "Disagreement Augmented, cifar100, vgg13 teacher, vgg8 student."
+  NAME: "Disagreement Augmented, cifar100, vgg13 teacher, vgg8 student, using gt labels."
   TAG: "kd,vgg13,vgg8"
   PROJECT: "disagreement_augmentation"
 DISTILLER:

@@ -3,6 +3,7 @@ import argparse
 import torch
 import torch.nn as nn
 import torch.backends.cudnn as cudnn
+import random
 
 cudnn.benchmark = True
 
@@ -17,8 +18,14 @@ from src.engine.cfg import CFG as cfg
 from src.engine.cfg import show_cfg
 from src.engine import trainer_dict
 
+def ensure_reproducibility(seed=88):
+    random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
 
 def main_train(cfg, resume, opts):
+    ensure_reproducibility()
     experiment_name = cfg.EXPERIMENT.NAME
     if experiment_name == "":
         experiment_name = cfg.EXPERIMENT.TAG

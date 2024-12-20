@@ -1,1 +1,1 @@
-from train import main_train
+from src.tools.train import main_train

@@ -32,6 +32,8 @@ pip install -r requirements.txt
 
 # Usage 
 
+See <https://github.com/megvii-research/mdistiller?tab=readme-ov-file#getting-started> for setting up Weights & Biases logging.
+
 Download the `cifar_teachers.tar` at <https://github.com/megvii-research/mdistiller/releases/tag/checkpoints> and untar it to `./download_ckpts` via `tar xvf cifar_teachers.tar`.
 
 Train a Resnet8x4 student with a pretrained Resnet32x4 teacher.
@@ -48,5 +50,5 @@ python tools/train.py --cfg configs/cifar100/da_resnet32x4_resnet8x4.yaml
 
 # Acknowledgements
 
-This codebase is modified from https://github.com/megvii-research/mdistiller
+This codebase is modified from <https://github.com/megvii-research/mdistiller>
 

@@ -1,5 +1,7 @@
 # Disagreement Augmentation for Distillation
 
+See the [paper](https://y4umeng.github.io/disagreement_augmentation/Disagreement_Augmentation_for_Distillation.pdf) for more detail.
+
 Disagreement Augmentation (DA) introduces a novel method for improving knowledge distillation by optimizing input samples to emphasize areas of disagreement between a teacher model and a student model. Inspired by the Socratic method, DA leverages structured conflict to challenge the student, fostering better generalization and robustness.
 
 The DA algorithm is implemented [here](https://github.com/y4umeng/disagreement_augmentation/blob/ae44d2078f93cba7cf2f0d67296644a295210dfd/src/distillers/DA.py#L18).

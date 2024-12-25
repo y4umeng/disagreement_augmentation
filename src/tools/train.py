@@ -10,7 +10,7 @@ cudnn.benchmark = True
 import sys
 sys.path.append('..')
 
-from src.models import cifar_model_dict, imagenet_model_dict
+from src.models import cifar_model_dict, imagenet_model_dict, tiny_imagenet_model_dict
 from src.distillers import distiller_dict
 from src.dataset import get_dataset
 from src.engine.utils import load_checkpoint, log_msg
@@ -53,21 +53,28 @@ def main_train(cfg, resume, opts):
     if cfg.DISTILLER.TYPE == "NONE":
         if cfg.DATASET.TYPE == "imagenet":
             model_student = imagenet_model_dict[cfg.DISTILLER.STUDENT](pretrained=False)
+        elif cfg.DATASET.TYPE == "tiny_imagenet":
+            model_student, pretrain_model_path = tiny_imagenet_model_dict[cfg.DISTILLER.STUDENT]
+            assert (
+                pretrain_model_path is not None
+            ), "no pretrain model for student {}".format(cfg.DISTILLER.STUDENT)
+            model_student = model_student(num_classes=num_classes)
+            model_student.load_state_dict(load_checkpoint(pretrain_model_path)["model"])
         else:
             model_student = cifar_model_dict[cfg.DISTILLER.STUDENT][0](
                 num_classes=num_classes
             )
         distiller = distiller_dict[cfg.DISTILLER.TYPE](model_student)
     # distillation
-    if cfg.DISTILLER.TYPE == "DA":
+    elif cfg.DISTILLER.TYPE == "DA":
         if cfg.DATASET.TYPE == "imagenet":
             model_teacher = imagenet_model_dict[cfg.DISTILLER.TEACHER](pretrained=True)
             model_student = imagenet_model_dict[cfg.DISTILLER.STUDENT](pretrained=False)
         else:
-            model_student = cifar_model_dict[cfg.DISTILLER.STUDENT][0](
+            model_dict = tiny_imagenet_model_dict if cfg.DATASET.TYPE == "tiny_imagenet" else cifar_model_dict
+            model_student = model_dict[cfg.DISTILLER.STUDENT][0](
                 num_classes=num_classes
             )
-            model_dict = cifar_model_dict
             net, pretrain_model_path = model_dict[cfg.DISTILLER.TEACHER]
             assert (
                 pretrain_model_path is not None
@@ -81,7 +88,7 @@ def main_train(cfg, resume, opts):
             model_teacher = imagenet_model_dict[cfg.DISTILLER.TEACHER](pretrained=True)
             model_student = imagenet_model_dict[cfg.DISTILLER.STUDENT](pretrained=False)
         else:
-            model_dict = cifar_model_dict
+            model_dict = tiny_imagenet_model_dict if cfg.DATASET.TYPE == "tiny_imagenet" else cifar_model_dict
             net, pretrain_model_path = model_dict[cfg.DISTILLER.TEACHER]
             assert (
                 pretrain_model_path is not None

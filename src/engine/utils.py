@@ -36,6 +36,7 @@ def validate(val_loader, distiller):
     with torch.no_grad():
         start_time = time.time()
         for idx, (image, target) in enumerate(val_loader):
+            
             image = image.float()
             image = image.cuda(non_blocking=True)
             target = target.cuda(non_blocking=True)

@@ -126,6 +126,7 @@ class BaseTrainer(object):
                 "epoch_time": time.time() - epoch_start,
             }
         )
+        print(f"EPOCH TIME: {time.time() - epoch_start}")
         self.log(lr, epoch, log_dict)
         # saving checkpoint
         state = {

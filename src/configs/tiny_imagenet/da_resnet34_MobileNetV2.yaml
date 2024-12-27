@@ -4,6 +4,7 @@ EXPERIMENT:
   PROJECT: "disagreement_augmentation"
 DATASET:
   TYPE: "tiny_imagenet"
+  NUM_WORKERS: 4
 DISTILLER:
   TYPE: "DA"
   TEACHER: "resnet34"
@@ -12,9 +13,9 @@ LOG:
   WANDB: True
 SOLVER:
   BATCH_SIZE: 64
-  EPOCHS: 240
+  EPOCHS: 120
   LR: 0.05
-  LR_DECAY_STAGES: [150, 180, 210]
+  LR_DECAY_STAGES: [30, 60, 90]
   LR_DECAY_RATE: 0.1
   WEIGHT_DECAY: 0.0005
   MOMENTUM: 0.9

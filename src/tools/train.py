@@ -65,23 +65,6 @@ def main_train(cfg, resume, opts):
                 num_classes=num_classes
             )
         distiller = distiller_dict[cfg.DISTILLER.TYPE](model_student)
-    # distillation
-    elif cfg.DISTILLER.TYPE == "DA":
-        if cfg.DATASET.TYPE == "imagenet":
-            model_teacher = imagenet_model_dict[cfg.DISTILLER.TEACHER](pretrained=True)
-            model_student = imagenet_model_dict[cfg.DISTILLER.STUDENT](pretrained=False)
-        else:
-            model_dict = tiny_imagenet_model_dict if cfg.DATASET.TYPE == "tiny_imagenet" else cifar_model_dict
-            model_student = model_dict[cfg.DISTILLER.STUDENT][0](
-                num_classes=num_classes
-            )
-            net, pretrain_model_path = model_dict[cfg.DISTILLER.TEACHER]
-            assert (
-                pretrain_model_path is not None
-            ), "no pretrain model for teacher {}".format(cfg.DISTILLER.TEACHER)
-            model_teacher = net(num_classes=num_classes)
-            model_teacher.load_state_dict(load_checkpoint(pretrain_model_path)["model"])
-        distiller = distiller_dict[cfg.DISTILLER.TYPE](model_student, model_teacher, cfg)
     else:
         print(log_msg("Loading teacher model", "INFO"))
         if cfg.DATASET.TYPE == "imagenet":
@@ -98,14 +81,9 @@ def main_train(cfg, resume, opts):
             model_student = model_dict[cfg.DISTILLER.STUDENT][0](
                 num_classes=num_classes
             )
-        if cfg.DISTILLER.TYPE == "CRD":
-            distiller = distiller_dict[cfg.DISTILLER.TYPE](
-                model_student, model_teacher, cfg, num_data
-            )
-        else:
-            distiller = distiller_dict[cfg.DISTILLER.TYPE](
-                model_student, model_teacher, cfg
-            )
+        distiller = distiller_dict[cfg.DISTILLER.TYPE](
+            model_student, model_teacher, cfg
+        )
     distiller = torch.nn.DataParallel(distiller.cuda())
 
     # train

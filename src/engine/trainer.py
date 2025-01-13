@@ -19,6 +19,21 @@ from .utils import (
     log_msg,
 )
 
+def create_unique_log_path(prefix, experiment_name):
+    # Initial log path
+    base_path = os.path.join(prefix, experiment_name)
+    log_path = base_path
+    counter = 1
+
+    # Check if the path exists and append a number if necessary
+    while os.path.exists(log_path):
+        log_path = f"{base_path}_{counter}"
+        counter += 1
+
+    # Create the directory
+    os.makedirs(log_path)
+    return log_path
+
 class BaseTrainer(object):
     def __init__(self, experiment_name, distiller, train_loader, val_loader, cfg):
         self.cfg = cfg
@@ -28,9 +43,9 @@ class BaseTrainer(object):
         self.optimizer = self.init_optimizer(cfg)
         self.best_acc = -1
 
-        username = getpass.getuser()
+        # username = getpass.getuser()
         # init loggers
-        self.log_path = os.path.join(cfg.LOG.PREFIX, experiment_name)
+        self.log_path = create_unique_log_path(cfg.LOG.PREFIX, experiment_name)
         if not os.path.exists(self.log_path):
             os.makedirs(self.log_path)
         self.tf_writer = SummaryWriter(os.path.join(self.log_path, "train.events"))

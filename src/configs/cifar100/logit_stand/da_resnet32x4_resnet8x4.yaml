@@ -1,15 +1,14 @@
 EXPERIMENT:
-  NAME: "Disagreement Augmented, cifar100, resnet32x4 teacher, resnet8x4 student, using gt labels."
+  NAME: "DA + logit stand, resnet32x4/resnet8x4, cifar100"
   TAG: "kd,resnet32x4,resnet8x4"
-  PROJECT: "disagreement_augmentation"
-  DA: True
+  PROJECT: "logit_stand"
   LOGIT_STAND: True
 DISTILLER:
-  TYPE: "KD"
+  TYPE: "DA"
   TEACHER: "resnet32x4"
   STUDENT: "resnet8x4"
 LOG:
-  WANDB: False
+  WANDB: True
 SOLVER:
   BATCH_SIZE: 64
   EPOCHS: 240
@@ -19,7 +18,3 @@ SOLVER:
   WEIGHT_DECAY: 0.0005
   MOMENTUM: 0.9
   TYPE: "SGD"
-DA:
-  LR: 0.01778
-  EPOCHS: 1
-  PROB: 0.7374

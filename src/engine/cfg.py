@@ -9,6 +9,7 @@ def show_cfg(cfg):
     dump_cfg.DISTILLER = cfg.DISTILLER
     dump_cfg.SOLVER = cfg.SOLVER
     dump_cfg.LOG = cfg.LOG
+    dump_cfg.DA = cfg.DA
     if cfg.DISTILLER.TYPE in cfg:
         dump_cfg.update({cfg.DISTILLER.TYPE: cfg.get(cfg.DISTILLER.TYPE)})
     print(log_msg("CONFIG:\n{}".format(dump_cfg.dump()), "INFO"))
@@ -21,6 +22,9 @@ CFG.EXPERIMENT = CN()
 CFG.EXPERIMENT.PROJECT = "distill"
 CFG.EXPERIMENT.NAME = ""
 CFG.EXPERIMENT.TAG = "default"
+CFG.EXPERIMENT.LOGIT_STAND = False
+CFG.EXPERIMENT.DA = False
+CFG.EXPERIMENT.FGSM = False
 
 # Dataset
 CFG.DATASET = CN()
@@ -32,8 +36,8 @@ CFG.DATASET.TEST.BATCH_SIZE = 64
 # Distiller
 CFG.DISTILLER = CN()
 CFG.DISTILLER.TYPE = "NONE"  # Vanilla as default
-CFG.DISTILLER.TEACHER = "ResNet50"
-CFG.DISTILLER.STUDENT = "resnet32"
+CFG.DISTILLER.TEACHER = "resnet32x4"
+CFG.DISTILLER.STUDENT = "resnet8x4"
 
 # Solver
 CFG.SOLVER = CN()
@@ -58,15 +62,18 @@ CFG.LOG.WANDB = True
 
 # KD CFG
 CFG.KD = CN()
-CFG.KD.TEMPERATURE = 4
+CFG.KD.TEMPERATURE = 2
 CFG.KD.LOSS = CN()
 CFG.KD.LOSS.CE_WEIGHT = 0.1
-CFG.KD.LOSS.KD_WEIGHT = 0.9
+CFG.KD.LOSS.KD_WEIGHT = 9
 
 # DA CFG
 CFG.DA = CN()
-CFG.DA.LR = 0.01
-CFG.DA.EPOCHS = 2000
-CFG.DA.RANDOM_INIT = False
-CFG.DA.USE_LABELS = True
-CFG.DA.PROB = 1.0
+CFG.DA.LR = 0.01778
+CFG.DA.EPOCHS = 1
+CFG.DA.PROB = 0.7374
+
+# FGSM CFG
+CFG.FGSM = CN()
+CFG.FGSM.EPSILON = 0.01778
+CFG.FGSM.PROB = 0.7374

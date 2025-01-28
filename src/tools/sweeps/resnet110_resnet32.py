@@ -12,10 +12,9 @@ from src.tools import main_train
 wandb.login()
 
 def main():
-    wandb.init(project="CDD-sweep")
-    cfg.CD.LR = wandb.config.lr
-    cfg.CD.EPOCHS = wandb.config.epochs
-    cfg.CD.PROB = wandb.config.prob
+    wandb.init(project="striving_sweeps")
+    cfg.DA.LR = wandb.config.lr
+    cfg.DA.PROB = wandb.config.prob
     main_train(cfg, False, None)
 
 # Define the search space
@@ -23,9 +22,8 @@ sweep_configuration = {
     "method": "bayes",
     "metric": {"goal": "maximize", "name": "best_acc"},
     "parameters": {
-        "lr": {"max": 0.1, "min": 0.001},
-        "epochs": {"max": 3, "min":1},
-        "prob": {"max": 1.0, "min":0.1},
+        "lr": {"max": 0.01, "min": 0.001},
+        "prob": {"max": 0.7, "min":0.3},
     },
     "early_terminate": {
         "type": "hyperband",
@@ -35,6 +33,6 @@ sweep_configuration = {
 }
 
 # Start the sweep
-sweep_id = wandb.sweep(sweep=sweep_configuration, project="CDD-sweep")
-cfg.merge_from_file("configs/cifar100/da_resnet32x4_resnet8x4.yaml")
-wandb.agent(sweep_id, function=main, count=200)
+sweep_id = wandb.sweep(sweep=sweep_configuration, project="striving_sweeps")
+cfg.merge_from_file("configs/cifar100/striving_sweeps/da_resnet110_resnet32.yaml")
+wandb.agent(sweep_id, function=main, count=50)

@@ -1,0 +1,25 @@
+EXPERIMENT:
+  NAME: "ResNet50/MobileNetV2"
+  TAG: "kd,ResNet50,MobileNetV2"
+  PROJECT: "striving_sweeps"
+  DA: True
+  LOGIT_STAND: True
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "ResNet50"
+  STUDENT: "MobileNetV2"
+LOG:
+  WANDB: True
+SOLVER:
+  BATCH_SIZE: 64
+  EPOCHS: 240
+  LR: 0.05
+  LR_DECAY_STAGES: [150, 180, 210]
+  LR_DECAY_RATE: 0.1
+  WEIGHT_DECAY: 0.0005
+  MOMENTUM: 0.9
+  TYPE: "SGD"
+DA:
+  LR: 0.00192
+  EPOCHS: 1
+  PROB: 0.268

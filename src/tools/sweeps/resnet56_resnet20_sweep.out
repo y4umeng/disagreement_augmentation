@@ -1,0 +1,5 @@
+nohup: ignoring input
+Traceback (most recent call last):
+  File "/home/yw3809/Projects/disagreement_augmentation/src/tools/sweeps/resnet56_resnet20.py", line 9, in <module>
+    from src.engine.cfg import CFG as cfg
+ModuleNotFoundError: No module named 'src'

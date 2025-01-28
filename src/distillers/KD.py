@@ -18,7 +18,7 @@ class KD(AugmentedDistiller):
             image = self.DA(image)
 
         if self.cfg.EXPERIMENT.FGSM and torch.rand(1)[0] < self.cfg.FGSM.PROB:
-            image = self.FGSM(image, target)
+            image = self.FGSM2(image, target)
 
         logits_student, _ = self.student(image)
         with torch.no_grad():

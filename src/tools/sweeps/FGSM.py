@@ -23,7 +23,7 @@ sweep_configuration = {
     "metric": {"goal": "maximize", "name": "best_acc"},
     "parameters": {
         "epsilon": {"max": 0.3, "min": 0.001},
-        "prob": {"max": 1.0, "min":1.0},
+        "prob": {"max": 1.0, "min":0.1},
     },
     "early_terminate": {
         "type": "hyperband",

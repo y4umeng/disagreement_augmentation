@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms as transforms
-
+import torchvision
+import matplotlib.pyplot as plt
 from ._base import Distiller
 
 def normalize(logit):
@@ -98,6 +99,18 @@ class AugmentedDistiller(Distiller):
         # Reapply normalization
         perturbed_data_normalized = transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))(perturbed_data)
         return perturbed_data_normalized.detach()
+    
+    def FGSM2(self, images, targets):
+        images.requires_grad_(True)
+        optimizer = torch.optim.Adam([images], lr=self.cfg.FGSM.EPSILON)
+        logits_student, _ = self.student(images)
+        loss = -1 * F.nll_loss(logits_student, targets)
+        images.grad = torch.autograd.grad(loss, images)[0]
+        optimizer.step()
+        optimizer.zero_grad()
+        images.requires_grad_(False)
+        return images
+    
 
     def forward_eval(self, image, lr, epochs):
         augmented_image = image.detach().clone().requires_grad_(True)

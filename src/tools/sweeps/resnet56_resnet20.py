@@ -5,8 +5,6 @@ cudnn.benchmark = True
 
 import sys
 sys.path.append('..')
-# sys.path.append('../..')
-
 
 from src.engine.cfg import CFG as cfg
 from src.tools import main_train
@@ -14,7 +12,7 @@ from src.tools import main_train
 wandb.login()
 
 def main():
-    wandb.init(project="CDD-sweep")
+    wandb.init(project="striving_sweeps")
     cfg.DA.LR = wandb.config.lr
     cfg.DA.PROB = wandb.config.prob
     main_train(cfg, False, None)
@@ -35,6 +33,6 @@ sweep_configuration = {
 }
 
 # Start the sweep
-sweep_id = wandb.sweep(sweep=sweep_configuration, project="CDD-sweep")
-cfg.merge_from_file("configs/cifar100/da_resnet32x4_resnet8x4.yaml")
+sweep_id = wandb.sweep(sweep=sweep_configuration, project="striving_sweeps")
+cfg.merge_from_file("configs/cifar100/striving_sweeps/da_resnet56_resnet20.yaml")
 wandb.agent(sweep_id, function=main, count=200)

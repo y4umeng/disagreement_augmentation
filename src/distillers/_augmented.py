@@ -37,11 +37,11 @@ class AugmentedDistiller(Distiller):
             loss = -1 * kd_loss(
                         logits_student, logits_teacher, 1, self.logit_stand
                     )
-            images.grad = torch.autograd.grad(loss, images)[0]
+            # images.grad = torch.autograd.grad(loss, images)[0]
+            loss.backward()
             optimizer.step()
             optimizer.zero_grad()
-        images.requires_grad_(False)
-        return images
+        return images.clone().detach()
     
 
     def _fgsm_attack(self, image, epsilon, data_grad):

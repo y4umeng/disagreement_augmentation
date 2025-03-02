@@ -1,0 +1,776 @@
+nohup: ignoring input
+wandb: Using wandb-core as the SDK backend. Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: y4umeng (y4umeng-columbia-university). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.18.5
+wandb: Run data is saved locally in /home/yw3809/Projects/disagreement_augmentation/src/wandb/run-20241226_230256-stn8njxz
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run logit_stand/KD + logit stand, resnet32x4/resnet8x4, cifar100
+wandb: ⭐️ View project at https://wandb.ai/y4umeng-columbia-university/logit_stand
+wandb: 🚀 View run at https://wandb.ai/y4umeng-columbia-university/logit_stand/runs/stn8njxz
+/home/yw3809/Projects/disagreement_augmentation/src/../src/engine/utils.py:106: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(f, map_location="cpu")
+[36m[INFO] CONFIG:
+DATASET:
+  NUM_WORKERS: 4
+  TEST:
+    BATCH_SIZE: 64
+  TYPE: cifar100
+DISTILLER:
+  STUDENT: resnet8x4
+  TEACHER: resnet32x4
+  TYPE: KD
+EXPERIMENT:
+  LOGIT_STAND: true
+  NAME: KD + logit stand, resnet32x4/resnet8x4, cifar100
+  PROJECT: logit_stand
+  TAG: kd,resnet32x4,resnet8x4
+KD:
+  LOSS:
+    CE_WEIGHT: 0.1
+    KD_WEIGHT: 9
+  TEMPERATURE: 2
+LOG:
+  PREFIX: ./output
+  SAVE_CHECKPOINT_FREQ: 40
+  TENSORBOARD_FREQ: 500
+  WANDB: true
+SOLVER:
+  BATCH_SIZE: 64
+  EPOCHS: 240
+  LR: 0.05
+  LR_DECAY_RATE: 0.1
+  LR_DECAY_STAGES:
+  - 150
+  - 180
+  - 210
+  MOMENTUM: 0.9
+  TRAINER: base
+  TYPE: SGD
+  WEIGHT_DECAY: 0.0005
+[0m
+Files already downloaded and verified
+Files already downloaded and verified
+[36m[INFO] Loading teacher model[0m
+Epoch:1| Time(data):0.000| Time(train):0.003| Loss:15.9041| Top-1:10.690| Top-5:32.514
+Top-1:16.420| Top-5:43.840
+EPOCH TIME: 6.068272829055786
+Epoch:2| Time(data):0.000| Time(train):0.003| Loss:12.6866| Top-1:24.626| Top-5:55.484
+Top-1:27.320| Top-5:59.230
+EPOCH TIME: 5.630344867706299
+Epoch:3| Time(data):0.000| Time(train):0.003| Loss:10.2288| Top-1:36.752| Top-5:70.116
+Top-1:36.680| Top-5:69.970
+EPOCH TIME: 5.647749185562134
+Epoch:4| Time(data):0.000| Time(train):0.003| Loss:8.7732| Top-1:44.622| Top-5:77.008
+Top-1:42.930| Top-5:74.440
+EPOCH TIME: 5.613234281539917
+Epoch:5| Time(data):0.000| Time(train):0.003| Loss:7.7703| Top-1:50.334| Top-5:81.360
+Top-1:46.070| Top-5:77.460
+EPOCH TIME: 5.632147312164307
+Epoch:6| Time(data):0.000| Time(train):0.003| Loss:7.0943| Top-1:54.218| Top-5:83.714
+Top-1:48.390| Top-5:78.880
+EPOCH TIME: 5.6750524044036865
+Epoch:7| Time(data):0.000| Time(train):0.003| Loss:6.5965| Top-1:57.218| Top-5:85.550
+Top-1:52.770| Top-5:82.500
+EPOCH TIME: 5.621816396713257
+Epoch:8| Time(data):0.000| Time(train):0.003| Loss:6.2876| Top-1:59.166| Top-5:86.596
+Top-1:48.120| Top-5:78.820
+EPOCH TIME: 5.649805307388306
+Epoch:9| Time(data):0.000| Time(train):0.003| Loss:6.0146| Top-1:60.796| Top-5:87.632
+Top-1:53.330| Top-5:82.540
+EPOCH TIME: 5.659947872161865
+Epoch:10| Time(data):0.000| Time(train):0.003| Loss:5.8349| Top-1:61.646| Top-5:88.186
+Top-1:55.190| Top-5:83.550
+EPOCH TIME: 5.677661657333374
+Epoch:11| Time(data):0.000| Time(train):0.003| Loss:5.6919| Top-1:62.408| Top-5:88.748
+Top-1:54.760| Top-5:83.400
+EPOCH TIME: 5.6464221477508545
+Epoch:12| Time(data):0.000| Time(train):0.003| Loss:5.5602| Top-1:63.310| Top-5:88.944
+Top-1:57.900| Top-5:84.110
+EPOCH TIME: 5.623959302902222
+Epoch:13| Time(data):0.000| Time(train):0.003| Loss:5.4531| Top-1:63.984| Top-5:89.372
+Top-1:55.000| Top-5:82.480
+EPOCH TIME: 5.646173715591431
+Epoch:14| Time(data):0.000| Time(train):0.003| Loss:5.3454| Top-1:64.518| Top-5:89.648
+Top-1:57.400| Top-5:84.900
+EPOCH TIME: 5.65562629699707
+Epoch:15| Time(data):0.000| Time(train):0.003| Loss:5.2601| Top-1:65.428| Top-5:90.046
+Top-1:53.910| Top-5:83.740
+EPOCH TIME: 5.609009027481079
+Epoch:16| Time(data):0.000| Time(train):0.003| Loss:5.2142| Top-1:65.732| Top-5:90.086
+Top-1:55.330| Top-5:83.470
+EPOCH TIME: 5.637749671936035
+Epoch:17| Time(data):0.000| Time(train):0.003| Loss:5.1614| Top-1:65.810| Top-5:90.462
+Top-1:56.270| Top-5:84.170
+EPOCH TIME: 5.618945837020874
+Epoch:18| Time(data):0.000| Time(train):0.003| Loss:5.1289| Top-1:66.392| Top-5:90.628
+Top-1:53.300| Top-5:81.140
+EPOCH TIME: 5.702714204788208
+Epoch:19| Time(data):0.000| Time(train):0.003| Loss:5.0701| Top-1:66.450| Top-5:90.660
+Top-1:58.030| Top-5:85.460
+EPOCH TIME: 5.648552179336548
+Epoch:20| Time(data):0.000| Time(train):0.003| Loss:5.0338| Top-1:66.718| Top-5:90.868
+Top-1:57.660| Top-5:84.780
+EPOCH TIME: 5.661550998687744
+Epoch:21| Time(data):0.000| Time(train):0.003| Loss:5.0070| Top-1:67.064| Top-5:90.906
+Top-1:57.290| Top-5:85.220
+EPOCH TIME: 5.641237497329712
+Epoch:22| Time(data):0.000| Time(train):0.003| Loss:4.9557| Top-1:67.380| Top-5:91.270
+Top-1:56.910| Top-5:85.260
+EPOCH TIME: 5.654468536376953
+Epoch:23| Time(data):0.000| Time(train):0.003| Loss:4.9246| Top-1:67.504| Top-5:91.292
+Top-1:57.500| Top-5:84.790
+EPOCH TIME: 5.646001577377319
+Epoch:24| Time(data):0.000| Time(train):0.003| Loss:4.9099| Top-1:67.676| Top-5:91.286
+Top-1:58.760| Top-5:85.930
+EPOCH TIME: 5.608800888061523
+Epoch:25| Time(data):0.000| Time(train):0.003| Loss:4.8996| Top-1:67.696| Top-5:91.326
+Top-1:58.390| Top-5:86.190
+EPOCH TIME: 5.6235857009887695
+Epoch:26| Time(data):0.000| Time(train):0.003| Loss:4.8558| Top-1:67.900| Top-5:91.366
+Top-1:60.290| Top-5:85.100
+EPOCH TIME: 5.640893459320068
+Epoch:27| Time(data):0.000| Time(train):0.003| Loss:4.8375| Top-1:67.808| Top-5:91.504
+Top-1:60.780| Top-5:86.230
+EPOCH TIME: 5.611104726791382
+Epoch:28| Time(data):0.000| Time(train):0.003| Loss:4.8237| Top-1:68.114| Top-5:91.510
+Top-1:58.290| Top-5:85.930
+EPOCH TIME: 5.6509199142456055
+Epoch:29| Time(data):0.000| Time(train):0.003| Loss:4.7970| Top-1:68.344| Top-5:91.702
+Top-1:58.910| Top-5:85.660
+EPOCH TIME: 5.624429941177368
+Epoch:30| Time(data):0.000| Time(train):0.003| Loss:4.7869| Top-1:68.400| Top-5:91.752
+Top-1:59.330| Top-5:86.860
+EPOCH TIME: 5.646133899688721
+Epoch:31| Time(data):0.000| Time(train):0.003| Loss:4.7759| Top-1:68.550| Top-5:91.738
+Top-1:60.790| Top-5:86.420
+EPOCH TIME: 5.669193267822266
+Epoch:32| Time(data):0.000| Time(train):0.003| Loss:4.7443| Top-1:68.738| Top-5:91.714
+Top-1:60.320| Top-5:85.940
+EPOCH TIME: 5.7053656578063965
+Epoch:33| Time(data):0.000| Time(train):0.003| Loss:4.7588| Top-1:68.608| Top-5:91.758
+Top-1:62.140| Top-5:87.700
+EPOCH TIME: 5.642509460449219
+Epoch:34| Time(data):0.000| Time(train):0.003| Loss:4.7091| Top-1:68.980| Top-5:91.774
+Top-1:60.980| Top-5:87.180
+EPOCH TIME: 5.635986089706421
+Epoch:35| Time(data):0.000| Time(train):0.003| Loss:4.7159| Top-1:68.882| Top-5:91.868
+Top-1:60.200| Top-5:86.310
+EPOCH TIME: 5.634642124176025
+Epoch:36| Time(data):0.000| Time(train):0.003| Loss:4.6885| Top-1:69.210| Top-5:92.052
+Top-1:58.920| Top-5:85.020
+EPOCH TIME: 5.623504638671875
+Epoch:37| Time(data):0.000| Time(train):0.003| Loss:4.6913| Top-1:68.890| Top-5:92.014
+Top-1:57.260| Top-5:84.020
+EPOCH TIME: 5.639741897583008
+Epoch:38| Time(data):0.000| Time(train):0.003| Loss:4.6714| Top-1:69.198| Top-5:92.018
+Top-1:61.210| Top-5:86.730
+EPOCH TIME: 5.6375555992126465
+Epoch:39| Time(data):0.000| Time(train):0.003| Loss:4.6618| Top-1:69.158| Top-5:92.086
+Top-1:58.580| Top-5:85.990
+EPOCH TIME: 5.617000341415405
+Epoch:40| Time(data):0.000| Time(train):0.003| Loss:4.6588| Top-1:69.080| Top-5:92.164
+Top-1:61.670| Top-5:87.810
+EPOCH TIME: 5.634912490844727
+Epoch:41| Time(data):0.000| Time(train):0.003| Loss:4.6416| Top-1:69.390| Top-5:92.068
+Top-1:56.290| Top-5:84.090
+EPOCH TIME: 5.606679201126099
+Epoch:42| Time(data):0.000| Time(train):0.003| Loss:4.6674| Top-1:69.146| Top-5:92.100
+Top-1:59.390| Top-5:85.190
+EPOCH TIME: 5.627828121185303
+Epoch:43| Time(data):0.000| Time(train):0.003| Loss:4.6375| Top-1:69.428| Top-5:92.092
+Top-1:60.700| Top-5:86.630
+EPOCH TIME: 5.679874658584595
+Epoch:44| Time(data):0.000| Time(train):0.003| Loss:4.6359| Top-1:69.224| Top-5:92.260
+Top-1:60.560| Top-5:86.660
+EPOCH TIME: 5.608632326126099
+Epoch:45| Time(data):0.000| Time(train):0.003| Loss:4.6037| Top-1:69.582| Top-5:92.280
+Top-1:56.340| Top-5:83.250
+EPOCH TIME: 5.6452391147613525
+Epoch:46| Time(data):0.000| Time(train):0.003| Loss:4.6058| Top-1:69.518| Top-5:92.364
+Top-1:60.700| Top-5:86.650
+EPOCH TIME: 5.645749568939209
+Epoch:47| Time(data):0.000| Time(train):0.003| Loss:4.5855| Top-1:69.964| Top-5:92.318
+Top-1:59.080| Top-5:85.610
+EPOCH TIME: 5.6409502029418945
+Epoch:48| Time(data):0.000| Time(train):0.003| Loss:4.5962| Top-1:69.800| Top-5:92.214
+Top-1:60.390| Top-5:85.910
+EPOCH TIME: 5.664075136184692
+Epoch:49| Time(data):0.000| Time(train):0.003| Loss:4.5814| Top-1:69.836| Top-5:92.342
+Top-1:58.850| Top-5:85.000
+EPOCH TIME: 5.644809007644653
+Epoch:50| Time(data):0.000| Time(train):0.003| Loss:4.5729| Top-1:69.856| Top-5:92.568
+Top-1:58.640| Top-5:85.710
+EPOCH TIME: 5.64137077331543
+Epoch:51| Time(data):0.000| Time(train):0.003| Loss:4.5835| Top-1:69.774| Top-5:92.552
+Top-1:60.940| Top-5:86.680
+EPOCH TIME: 5.63476824760437
+Epoch:52| Time(data):0.000| Time(train):0.003| Loss:4.5828| Top-1:69.748| Top-5:92.300
+Top-1:59.770| Top-5:85.840
+EPOCH TIME: 5.603720664978027
+Epoch:53| Time(data):0.000| Time(train):0.003| Loss:4.5605| Top-1:70.004| Top-5:92.438
+Top-1:61.940| Top-5:87.390
+EPOCH TIME: 5.7294557094573975
+Epoch:54| Time(data):0.000| Time(train):0.003| Loss:4.5293| Top-1:70.222| Top-5:92.476
+Top-1:59.780| Top-5:85.910
+EPOCH TIME: 5.620121955871582
+Epoch:55| Time(data):0.000| Time(train):0.003| Loss:4.5368| Top-1:70.098| Top-5:92.438
+Top-1:62.360| Top-5:87.910
+EPOCH TIME: 5.657562732696533
+Epoch:56| Time(data):0.000| Time(train):0.003| Loss:4.5339| Top-1:70.274| Top-5:92.458
+Top-1:61.820| Top-5:87.430
+EPOCH TIME: 5.617894411087036
+Epoch:57| Time(data):0.000| Time(train):0.003| Loss:4.5612| Top-1:70.020| Top-5:92.486
+Top-1:59.680| Top-5:85.650
+EPOCH TIME: 5.623850584030151
+Epoch:58| Time(data):0.000| Time(train):0.003| Loss:4.5400| Top-1:70.170| Top-5:92.422
+Top-1:59.480| Top-5:85.440
+EPOCH TIME: 5.644052267074585
+Epoch:59| Time(data):0.000| Time(train):0.003| Loss:4.5293| Top-1:70.274| Top-5:92.602
+Top-1:61.510| Top-5:86.630
+EPOCH TIME: 5.688871145248413
+Epoch:60| Time(data):0.000| Time(train):0.003| Loss:4.5323| Top-1:69.860| Top-5:92.526
+Top-1:60.300| Top-5:86.400
+EPOCH TIME: 5.685891628265381
+Epoch:61| Time(data):0.000| Time(train):0.003| Loss:4.5185| Top-1:70.024| Top-5:92.458
+Top-1:62.820| Top-5:87.590
+EPOCH TIME: 5.637722969055176
+Epoch:62| Time(data):0.000| Time(train):0.003| Loss:4.5088| Top-1:70.056| Top-5:92.692
+Top-1:62.620| Top-5:88.230
+EPOCH TIME: 5.733277320861816
+Epoch:63| Time(data):0.000| Time(train):0.003| Loss:4.4885| Top-1:70.444| Top-5:92.650
+Top-1:59.600| Top-5:86.240
+EPOCH TIME: 5.62985372543335
+Epoch:64| Time(data):0.000| Time(train):0.003| Loss:4.5335| Top-1:70.256| Top-5:92.576
+Top-1:62.790| Top-5:87.880
+EPOCH TIME: 5.61512565612793
+Epoch:65| Time(data):0.000| Time(train):0.003| Loss:4.5311| Top-1:70.188| Top-5:92.490
+Top-1:60.320| Top-5:86.770
+EPOCH TIME: 5.660508155822754
+Epoch:66| Time(data):0.000| Time(train):0.003| Loss:4.4846| Top-1:70.540| Top-5:92.616
+Top-1:58.810| Top-5:85.020
+EPOCH TIME: 5.64481782913208
+Epoch:67| Time(data):0.000| Time(train):0.003| Loss:4.4991| Top-1:70.296| Top-5:92.496
+Top-1:59.950| Top-5:86.940
+EPOCH TIME: 5.640611886978149
+Epoch:68| Time(data):0.000| Time(train):0.003| Loss:4.4934| Top-1:70.480| Top-5:92.784
+Top-1:60.160| Top-5:86.940
+EPOCH TIME: 5.618470191955566
+Epoch:69| Time(data):0.000| Time(train):0.003| Loss:4.4990| Top-1:70.256| Top-5:92.468
+Top-1:56.980| Top-5:83.480
+EPOCH TIME: 5.614821195602417
+Epoch:70| Time(data):0.000| Time(train):0.003| Loss:4.4896| Top-1:70.290| Top-5:92.660
+Top-1:61.240| Top-5:85.660
+EPOCH TIME: 5.674834251403809
+Epoch:71| Time(data):0.000| Time(train):0.003| Loss:4.4820| Top-1:70.332| Top-5:92.810
+Top-1:57.670| Top-5:84.260
+EPOCH TIME: 5.659645318984985
+Epoch:72| Time(data):0.000| Time(train):0.003| Loss:4.4936| Top-1:70.368| Top-5:92.734
+Top-1:62.780| Top-5:87.980
+EPOCH TIME: 5.629542589187622
+Epoch:73| Time(data):0.000| Time(train):0.003| Loss:4.4819| Top-1:70.322| Top-5:92.688
+Top-1:61.980| Top-5:87.360
+EPOCH TIME: 5.602687835693359
+Epoch:74| Time(data):0.000| Time(train):0.003| Loss:4.5112| Top-1:70.162| Top-5:92.662
+Top-1:60.480| Top-5:86.860
+EPOCH TIME: 5.682353973388672
+Epoch:75| Time(data):0.000| Time(train):0.003| Loss:4.4657| Top-1:70.408| Top-5:92.826
+Top-1:58.030| Top-5:85.300
+EPOCH TIME: 5.618076801300049
+Epoch:76| Time(data):0.000| Time(train):0.003| Loss:4.4890| Top-1:70.510| Top-5:92.608
+Top-1:62.080| Top-5:87.830
+EPOCH TIME: 5.658817291259766
+Epoch:77| Time(data):0.000| Time(train):0.003| Loss:4.4470| Top-1:70.720| Top-5:92.758
+Top-1:58.920| Top-5:85.610
+EPOCH TIME: 5.610340118408203
+Epoch:78| Time(data):0.000| Time(train):0.003| Loss:4.4784| Top-1:70.328| Top-5:92.562
+Top-1:57.900| Top-5:85.400
+EPOCH TIME: 5.624737024307251
+Epoch:79| Time(data):0.000| Time(train):0.003| Loss:4.4878| Top-1:70.330| Top-5:92.684
+Top-1:59.900| Top-5:85.840
+EPOCH TIME: 5.611921310424805
+Epoch:80| Time(data):0.000| Time(train):0.003| Loss:4.4535| Top-1:70.664| Top-5:92.718
+Top-1:63.570| Top-5:88.180
+EPOCH TIME: 5.624516725540161
+Epoch:81| Time(data):0.000| Time(train):0.003| Loss:4.4832| Top-1:70.364| Top-5:92.754
+Top-1:58.060| Top-5:84.630
+EPOCH TIME: 5.620340347290039
+Epoch:82| Time(data):0.000| Time(train):0.003| Loss:4.4728| Top-1:70.544| Top-5:92.814
+Top-1:60.650| Top-5:86.810
+EPOCH TIME: 5.696128606796265
+Epoch:83| Time(data):0.000| Time(train):0.003| Loss:4.4547| Top-1:70.860| Top-5:92.770
+Top-1:62.400| Top-5:87.450
+EPOCH TIME: 5.683849811553955
+Epoch:84| Time(data):0.000| Time(train):0.003| Loss:4.4620| Top-1:70.542| Top-5:92.908
+Top-1:60.360| Top-5:86.170
+EPOCH TIME: 5.645627737045288
+Epoch:85| Time(data):0.000| Time(train):0.003| Loss:4.4480| Top-1:70.754| Top-5:92.856
+Top-1:61.290| Top-5:86.580
+EPOCH TIME: 5.656119346618652
+Epoch:86| Time(data):0.000| Time(train):0.003| Loss:4.4586| Top-1:70.688| Top-5:92.724
+Top-1:61.580| Top-5:87.760
+EPOCH TIME: 5.664114713668823
+Epoch:87| Time(data):0.000| Time(train):0.003| Loss:4.4500| Top-1:70.756| Top-5:92.836
+Top-1:60.990| Top-5:86.710
+EPOCH TIME: 5.594471454620361
+Epoch:88| Time(data):0.000| Time(train):0.003| Loss:4.4521| Top-1:70.570| Top-5:92.916
+Top-1:61.190| Top-5:86.990
+EPOCH TIME: 5.6730499267578125
+Epoch:89| Time(data):0.000| Time(train):0.003| Loss:4.4509| Top-1:70.526| Top-5:92.898
+Top-1:63.560| Top-5:88.090
+EPOCH TIME: 5.6274096965789795
+Epoch:90| Time(data):0.000| Time(train):0.003| Loss:4.4458| Top-1:70.580| Top-5:92.898
+Top-1:60.750| Top-5:86.370
+EPOCH TIME: 5.587440013885498
+Epoch:91| Time(data):0.000| Time(train):0.003| Loss:4.4206| Top-1:70.744| Top-5:92.848
+Top-1:61.470| Top-5:87.770
+EPOCH TIME: 5.6339662075042725
+Epoch:92| Time(data):0.000| Time(train):0.003| Loss:4.4660| Top-1:70.600| Top-5:92.570
+Top-1:61.850| Top-5:87.690
+EPOCH TIME: 5.643197059631348
+Epoch:93| Time(data):0.000| Time(train):0.003| Loss:4.4241| Top-1:70.842| Top-5:92.752
+Top-1:57.960| Top-5:84.930
+EPOCH TIME: 5.616194725036621
+Epoch:94| Time(data):0.000| Time(train):0.003| Loss:4.4425| Top-1:70.704| Top-5:92.740
+Top-1:62.380| Top-5:87.470
+EPOCH TIME: 5.59110164642334
+Epoch:95| Time(data):0.000| Time(train):0.003| Loss:4.4210| Top-1:70.992| Top-5:92.784
+Top-1:63.350| Top-5:88.660
+EPOCH TIME: 5.621576309204102
+Epoch:96| Time(data):0.000| Time(train):0.003| Loss:4.4485| Top-1:70.510| Top-5:92.744
+Top-1:61.420| Top-5:87.250
+EPOCH TIME: 5.604901313781738
+Epoch:97| Time(data):0.000| Time(train):0.003| Loss:4.4110| Top-1:70.900| Top-5:92.798
+Top-1:58.260| Top-5:85.820
+EPOCH TIME: 5.636996746063232
+Epoch:98| Time(data):0.000| Time(train):0.003| Loss:4.4269| Top-1:71.016| Top-5:92.874
+Top-1:61.720| Top-5:87.130
+EPOCH TIME: 5.620008945465088
+Epoch:99| Time(data):0.000| Time(train):0.003| Loss:4.4229| Top-1:70.868| Top-5:92.992
+Top-1:61.520| Top-5:87.070
+EPOCH TIME: 5.6099748611450195
+Epoch:100| Time(data):0.000| Time(train):0.003| Loss:4.4292| Top-1:70.920| Top-5:92.848
+Top-1:61.270| Top-5:86.610
+EPOCH TIME: 5.633576393127441
+Epoch:101| Time(data):0.000| Time(train):0.003| Loss:4.4181| Top-1:70.966| Top-5:92.900
+Top-1:59.880| Top-5:87.170
+EPOCH TIME: 5.597445011138916
+Epoch:102| Time(data):0.000| Time(train):0.003| Loss:4.4087| Top-1:70.968| Top-5:92.822
+Top-1:61.590| Top-5:88.010
+EPOCH TIME: 5.613486051559448
+Epoch:103| Time(data):0.000| Time(train):0.003| Loss:4.4299| Top-1:70.962| Top-5:92.804
+Top-1:58.360| Top-5:85.210
+EPOCH TIME: 5.625306129455566
+Epoch:104| Time(data):0.000| Time(train):0.003| Loss:4.4048| Top-1:70.942| Top-5:92.802
+Top-1:61.710| Top-5:87.350
+EPOCH TIME: 5.6386449337005615
+Epoch:105| Time(data):0.000| Time(train):0.003| Loss:4.4285| Top-1:70.658| Top-5:92.914
+Top-1:57.750| Top-5:85.140
+EPOCH TIME: 5.672552585601807
+Epoch:106| Time(data):0.000| Time(train):0.003| Loss:4.4098| Top-1:70.882| Top-5:92.842
+Top-1:58.000| Top-5:85.540
+EPOCH TIME: 5.711326837539673
+Epoch:107| Time(data):0.000| Time(train):0.003| Loss:4.4129| Top-1:70.894| Top-5:92.702
+Top-1:61.630| Top-5:86.900
+EPOCH TIME: 5.6223204135894775
+Epoch:108| Time(data):0.000| Time(train):0.003| Loss:4.4099| Top-1:70.912| Top-5:92.754
+Top-1:61.970| Top-5:87.680
+EPOCH TIME: 5.627416133880615
+Epoch:109| Time(data):0.000| Time(train):0.003| Loss:4.4164| Top-1:70.710| Top-5:92.974
+Top-1:60.960| Top-5:86.390
+EPOCH TIME: 5.634344577789307
+Epoch:110| Time(data):0.000| Time(train):0.003| Loss:4.4110| Top-1:70.958| Top-5:93.032
+Top-1:62.430| Top-5:87.540
+EPOCH TIME: 5.648650169372559
+Epoch:111| Time(data):0.000| Time(train):0.003| Loss:4.4051| Top-1:70.992| Top-5:92.862
+Top-1:60.690| Top-5:86.640
+EPOCH TIME: 5.636626482009888
+Epoch:112| Time(data):0.000| Time(train):0.003| Loss:4.3980| Top-1:71.120| Top-5:92.924
+Top-1:62.910| Top-5:88.460
+EPOCH TIME: 5.677546977996826
+Epoch:113| Time(data):0.000| Time(train):0.003| Loss:4.4048| Top-1:70.902| Top-5:93.024
+Top-1:53.990| Top-5:82.950
+EPOCH TIME: 5.652468681335449
+Epoch:114| Time(data):0.000| Time(train):0.003| Loss:4.4187| Top-1:71.020| Top-5:92.988
+Top-1:59.280| Top-5:87.000
+EPOCH TIME: 5.599391460418701
+Epoch:115| Time(data):0.000| Time(train):0.003| Loss:4.3964| Top-1:71.124| Top-5:92.928
+Top-1:63.700| Top-5:88.170
+EPOCH TIME: 5.646544694900513
+Epoch:116| Time(data):0.000| Time(train):0.003| Loss:4.3826| Top-1:71.140| Top-5:92.816
+Top-1:59.910| Top-5:86.350
+EPOCH TIME: 5.666876792907715
+Epoch:117| Time(data):0.000| Time(train):0.003| Loss:4.4075| Top-1:70.934| Top-5:92.848
+Top-1:63.390| Top-5:87.770
+EPOCH TIME: 5.644702911376953
+Epoch:118| Time(data):0.000| Time(train):0.003| Loss:4.4095| Top-1:71.036| Top-5:92.952
+Top-1:57.900| Top-5:85.040
+EPOCH TIME: 5.617914915084839
+Epoch:119| Time(data):0.000| Time(train):0.003| Loss:4.4028| Top-1:71.152| Top-5:92.878
+Top-1:60.370| Top-5:85.860
+EPOCH TIME: 5.610903263092041
+Epoch:120| Time(data):0.000| Time(train):0.003| Loss:4.3876| Top-1:71.044| Top-5:93.044
+Top-1:61.660| Top-5:87.340
+EPOCH TIME: 5.637094497680664
+Epoch:121| Time(data):0.000| Time(train):0.003| Loss:4.3856| Top-1:71.214| Top-5:93.142
+Top-1:60.520| Top-5:85.540
+EPOCH TIME: 5.59265923500061
+Epoch:122| Time(data):0.000| Time(train):0.003| Loss:4.3878| Top-1:71.138| Top-5:93.100
+Top-1:58.500| Top-5:85.970
+EPOCH TIME: 5.6143763065338135
+Epoch:123| Time(data):0.000| Time(train):0.003| Loss:4.3687| Top-1:71.208| Top-5:93.000
+Top-1:60.410| Top-5:87.020
+EPOCH TIME: 5.598750591278076
+Epoch:124| Time(data):0.000| Time(train):0.003| Loss:4.3956| Top-1:71.096| Top-5:93.020
+Top-1:59.090| Top-5:85.380
+EPOCH TIME: 5.805584192276001
+Epoch:125| Time(data):0.000| Time(train):0.003| Loss:4.3949| Top-1:71.124| Top-5:92.956
+Top-1:60.500| Top-5:86.620
+EPOCH TIME: 5.651411056518555
+Epoch:126| Time(data):0.000| Time(train):0.003| Loss:4.3842| Top-1:71.180| Top-5:93.170
+Top-1:62.050| Top-5:87.210
+EPOCH TIME: 5.637654066085815
+Epoch:127| Time(data):0.000| Time(train):0.003| Loss:4.3769| Top-1:71.028| Top-5:93.078
+Top-1:62.310| Top-5:88.040
+EPOCH TIME: 5.712653160095215
+Epoch:128| Time(data):0.000| Time(train):0.003| Loss:4.3815| Top-1:71.208| Top-5:93.086
+Top-1:57.940| Top-5:85.750
+EPOCH TIME: 5.8214147090911865
+Epoch:129| Time(data):0.000| Time(train):0.003| Loss:4.3910| Top-1:71.138| Top-5:92.994
+Top-1:60.860| Top-5:86.250
+EPOCH TIME: 5.6079699993133545
+Epoch:130| Time(data):0.000| Time(train):0.003| Loss:4.3941| Top-1:71.018| Top-5:92.978
+Top-1:61.400| Top-5:87.440
+EPOCH TIME: 5.737659454345703
+Epoch:131| Time(data):0.000| Time(train):0.003| Loss:4.3709| Top-1:71.368| Top-5:93.086
+Top-1:61.570| Top-5:86.700
+EPOCH TIME: 5.67304801940918
+Epoch:132| Time(data):0.000| Time(train):0.003| Loss:4.4017| Top-1:70.848| Top-5:93.056
+Top-1:62.190| Top-5:87.570
+EPOCH TIME: 5.634269952774048
+Epoch:133| Time(data):0.000| Time(train):0.003| Loss:4.3700| Top-1:71.272| Top-5:93.026
+Top-1:59.690| Top-5:86.100
+EPOCH TIME: 5.657150983810425
+Epoch:134| Time(data):0.000| Time(train):0.003| Loss:4.3879| Top-1:71.116| Top-5:93.042
+Top-1:61.920| Top-5:87.450
+EPOCH TIME: 5.609773635864258
+Epoch:135| Time(data):0.000| Time(train):0.003| Loss:4.3811| Top-1:71.092| Top-5:93.104
+Top-1:63.290| Top-5:88.460
+EPOCH TIME: 5.639226913452148
+Epoch:136| Time(data):0.000| Time(train):0.003| Loss:4.3842| Top-1:71.088| Top-5:93.034
+Top-1:61.820| Top-5:86.890
+EPOCH TIME: 5.623953819274902
+Epoch:137| Time(data):0.000| Time(train):0.003| Loss:4.3827| Top-1:71.046| Top-5:92.886
+Top-1:63.160| Top-5:88.440
+EPOCH TIME: 5.640148162841797
+Epoch:138| Time(data):0.000| Time(train):0.003| Loss:4.3581| Top-1:71.276| Top-5:93.048
+Top-1:60.780| Top-5:86.690
+EPOCH TIME: 5.647001028060913
+Epoch:139| Time(data):0.000| Time(train):0.003| Loss:4.3725| Top-1:71.198| Top-5:92.920
+Top-1:62.300| Top-5:87.340
+EPOCH TIME: 5.668001651763916
+Epoch:140| Time(data):0.000| Time(train):0.003| Loss:4.3824| Top-1:71.290| Top-5:93.072
+Top-1:60.200| Top-5:85.870
+EPOCH TIME: 5.683861970901489
+Epoch:141| Time(data):0.000| Time(train):0.003| Loss:4.3887| Top-1:70.960| Top-5:92.954
+Top-1:57.740| Top-5:85.010
+EPOCH TIME: 5.635239362716675
+Epoch:142| Time(data):0.000| Time(train):0.003| Loss:4.3682| Top-1:71.342| Top-5:93.082
+Top-1:62.010| Top-5:87.640
+EPOCH TIME: 5.719322204589844
+Epoch:143| Time(data):0.000| Time(train):0.003| Loss:4.3617| Top-1:71.082| Top-5:93.040
+Top-1:59.960| Top-5:86.450
+EPOCH TIME: 5.661319732666016
+Epoch:144| Time(data):0.000| Time(train):0.003| Loss:4.3900| Top-1:71.074| Top-5:93.158
+Top-1:60.780| Top-5:86.290
+EPOCH TIME: 5.618485927581787
+Epoch:145| Time(data):0.000| Time(train):0.003| Loss:4.3555| Top-1:71.384| Top-5:93.080
+Top-1:61.990| Top-5:87.920
+EPOCH TIME: 5.626604318618774
+Epoch:146| Time(data):0.000| Time(train):0.003| Loss:4.3666| Top-1:71.252| Top-5:92.912
+Top-1:61.610| Top-5:86.820
+EPOCH TIME: 5.739565372467041
+Epoch:147| Time(data):0.000| Time(train):0.003| Loss:4.3611| Top-1:71.354| Top-5:93.014
+Top-1:59.170| Top-5:85.890
+EPOCH TIME: 5.666471481323242
+Epoch:148| Time(data):0.000| Time(train):0.003| Loss:4.3699| Top-1:71.198| Top-5:93.062
+Top-1:58.830| Top-5:86.300
+EPOCH TIME: 5.659804821014404
+Epoch:149| Time(data):0.000| Time(train):0.003| Loss:4.3797| Top-1:71.222| Top-5:93.056
+Top-1:61.220| Top-5:86.780
+EPOCH TIME: 5.601004362106323
+Epoch:150| Time(data):0.000| Time(train):0.003| Loss:4.3852| Top-1:71.078| Top-5:93.134
+Top-1:62.870| Top-5:88.130
+EPOCH TIME: 5.641766309738159
+Epoch:151| Time(data):0.000| Time(train):0.003| Loss:3.0127| Top-1:80.770| Top-5:96.494
+Top-1:73.830| Top-5:93.510
+EPOCH TIME: 5.646416902542114
+Epoch:152| Time(data):0.000| Time(train):0.003| Loss:2.6555| Top-1:83.494| Top-5:97.170
+Top-1:74.370| Top-5:93.610
+EPOCH TIME: 5.620801210403442
+Epoch:153| Time(data):0.000| Time(train):0.003| Loss:2.5189| Top-1:84.670| Top-5:97.596
+Top-1:74.850| Top-5:93.570
+EPOCH TIME: 5.623016357421875
+Epoch:154| Time(data):0.000| Time(train):0.003| Loss:2.4171| Top-1:85.452| Top-5:97.784
+Top-1:75.030| Top-5:93.600
+EPOCH TIME: 5.625885486602783
+Epoch:155| Time(data):0.000| Time(train):0.003| Loss:2.3529| Top-1:86.018| Top-5:97.888
+Top-1:75.590| Top-5:93.550
+EPOCH TIME: 5.638849973678589
+Epoch:156| Time(data):0.000| Time(train):0.003| Loss:2.2868| Top-1:86.728| Top-5:98.138
+Top-1:75.060| Top-5:93.630
+EPOCH TIME: 5.656140327453613
+Epoch:157| Time(data):0.000| Time(train):0.003| Loss:2.2382| Top-1:87.388| Top-5:98.240
+Top-1:75.100| Top-5:93.760
+EPOCH TIME: 5.666984796524048
+Epoch:158| Time(data):0.000| Time(train):0.003| Loss:2.1924| Top-1:87.896| Top-5:98.352
+Top-1:75.070| Top-5:93.380
+EPOCH TIME: 5.650458097457886
+Epoch:159| Time(data):0.000| Time(train):0.003| Loss:2.1575| Top-1:88.106| Top-5:98.456
+Top-1:75.020| Top-5:93.250
+EPOCH TIME: 5.626731634140015
+Epoch:160| Time(data):0.000| Time(train):0.003| Loss:2.1279| Top-1:88.716| Top-5:98.586
+Top-1:75.280| Top-5:93.550
+EPOCH TIME: 5.709935665130615
+Epoch:161| Time(data):0.000| Time(train):0.003| Loss:2.0969| Top-1:88.922| Top-5:98.708
+Top-1:75.060| Top-5:93.290
+EPOCH TIME: 5.614567279815674
+Epoch:162| Time(data):0.000| Time(train):0.003| Loss:2.0742| Top-1:89.354| Top-5:98.752
+Top-1:74.920| Top-5:93.410
+EPOCH TIME: 5.653359413146973
+Epoch:163| Time(data):0.000| Time(train):0.003| Loss:2.0441| Top-1:89.752| Top-5:98.840
+Top-1:75.300| Top-5:93.180
+EPOCH TIME: 5.644145250320435
+Epoch:164| Time(data):0.000| Time(train):0.003| Loss:2.0263| Top-1:90.044| Top-5:98.866
+Top-1:74.750| Top-5:93.130
+EPOCH TIME: 5.636416912078857
+Epoch:165| Time(data):0.000| Time(train):0.003| Loss:2.0107| Top-1:90.128| Top-5:98.926
+Top-1:74.900| Top-5:93.120
+EPOCH TIME: 5.6615777015686035
+Epoch:166| Time(data):0.000| Time(train):0.003| Loss:2.0059| Top-1:90.366| Top-5:98.938
+Top-1:75.340| Top-5:93.330
+EPOCH TIME: 5.628240346908569
+Epoch:167| Time(data):0.000| Time(train):0.003| Loss:1.9787| Top-1:90.720| Top-5:99.070
+Top-1:74.660| Top-5:93.000
+EPOCH TIME: 5.632737398147583
+Epoch:168| Time(data):0.000| Time(train):0.003| Loss:1.9562| Top-1:91.156| Top-5:99.054
+Top-1:74.690| Top-5:93.030
+EPOCH TIME: 5.646007299423218
+Epoch:169| Time(data):0.000| Time(train):0.003| Loss:1.9481| Top-1:91.174| Top-5:99.066
+Top-1:75.010| Top-5:93.060
+EPOCH TIME: 5.716599464416504
+Epoch:170| Time(data):0.000| Time(train):0.003| Loss:1.9418| Top-1:91.254| Top-5:99.116
+Top-1:74.060| Top-5:93.040
+EPOCH TIME: 5.620983362197876
+Epoch:171| Time(data):0.000| Time(train):0.003| Loss:1.9417| Top-1:91.430| Top-5:99.166
+Top-1:74.710| Top-5:92.980
+EPOCH TIME: 5.6079723834991455
+Epoch:172| Time(data):0.000| Time(train):0.003| Loss:1.9401| Top-1:91.558| Top-5:99.184
+Top-1:73.930| Top-5:92.570
+EPOCH TIME: 5.668761730194092
+Epoch:173| Time(data):0.000| Time(train):0.003| Loss:1.9202| Top-1:91.970| Top-5:99.218
+Top-1:74.510| Top-5:92.870
+EPOCH TIME: 5.664384841918945
+Epoch:174| Time(data):0.000| Time(train):0.003| Loss:1.9198| Top-1:91.862| Top-5:99.242
+Top-1:74.040| Top-5:92.930
+EPOCH TIME: 5.6119606494903564
+Epoch:175| Time(data):0.000| Time(train):0.003| Loss:1.9156| Top-1:91.992| Top-5:99.280
+Top-1:74.500| Top-5:92.900
+EPOCH TIME: 5.633022308349609
+Epoch:176| Time(data):0.000| Time(train):0.003| Loss:1.9157| Top-1:91.940| Top-5:99.300
+Top-1:74.440| Top-5:93.060
+EPOCH TIME: 5.6767308712005615
+Epoch:177| Time(data):0.000| Time(train):0.003| Loss:1.9204| Top-1:92.006| Top-5:99.286
+Top-1:73.940| Top-5:92.840
+EPOCH TIME: 5.679694175720215
+Epoch:178| Time(data):0.000| Time(train):0.003| Loss:1.9186| Top-1:92.234| Top-5:99.370
+Top-1:74.320| Top-5:92.660
+EPOCH TIME: 5.627816200256348
+Epoch:179| Time(data):0.000| Time(train):0.003| Loss:1.9280| Top-1:92.104| Top-5:99.310
+Top-1:74.010| Top-5:92.960
+EPOCH TIME: 5.6459033489227295
+Epoch:180| Time(data):0.000| Time(train):0.003| Loss:1.9202| Top-1:91.966| Top-5:99.336
+Top-1:74.060| Top-5:92.600
+EPOCH TIME: 5.626339912414551
+Epoch:181| Time(data):0.000| Time(train):0.003| Loss:1.6087| Top-1:94.568| Top-5:99.592
+Top-1:75.850| Top-5:93.470
+EPOCH TIME: 5.634814500808716
+Epoch:182| Time(data):0.000| Time(train):0.003| Loss:1.5292| Top-1:95.424| Top-5:99.638
+Top-1:75.730| Top-5:93.470
+EPOCH TIME: 5.62241530418396
+Epoch:183| Time(data):0.000| Time(train):0.003| Loss:1.4999| Top-1:95.682| Top-5:99.650
+Top-1:75.890| Top-5:93.360
+EPOCH TIME: 5.621436834335327
+Epoch:184| Time(data):0.000| Time(train):0.003| Loss:1.4850| Top-1:95.842| Top-5:99.642
+Top-1:75.790| Top-5:93.300
+EPOCH TIME: 5.715433359146118
+Epoch:185| Time(data):0.000| Time(train):0.003| Loss:1.4721| Top-1:96.000| Top-5:99.702
+Top-1:75.980| Top-5:93.400
+EPOCH TIME: 5.6891608238220215
+Epoch:186| Time(data):0.000| Time(train):0.003| Loss:1.4633| Top-1:96.040| Top-5:99.730
+Top-1:75.960| Top-5:93.450
+EPOCH TIME: 5.671535015106201
+Epoch:187| Time(data):0.000| Time(train):0.003| Loss:1.4497| Top-1:96.204| Top-5:99.694
+Top-1:75.910| Top-5:93.530
+EPOCH TIME: 5.662512540817261
+Epoch:188| Time(data):0.000| Time(train):0.003| Loss:1.4381| Top-1:96.362| Top-5:99.722
+Top-1:75.880| Top-5:93.350
+EPOCH TIME: 5.649912595748901
+Epoch:189| Time(data):0.000| Time(train):0.003| Loss:1.4313| Top-1:96.378| Top-5:99.706
+Top-1:75.990| Top-5:93.490
+EPOCH TIME: 5.651926040649414
+Epoch:190| Time(data):0.000| Time(train):0.003| Loss:1.4260| Top-1:96.364| Top-5:99.722
+Top-1:75.850| Top-5:93.400
+EPOCH TIME: 5.617785692214966
+Epoch:191| Time(data):0.000| Time(train):0.003| Loss:1.4190| Top-1:96.472| Top-5:99.762
+Top-1:75.730| Top-5:93.420
+EPOCH TIME: 5.63368034362793
+Epoch:192| Time(data):0.000| Time(train):0.003| Loss:1.4120| Top-1:96.638| Top-5:99.738
+Top-1:75.700| Top-5:93.360
+EPOCH TIME: 5.639967441558838
+Epoch:193| Time(data):0.000| Time(train):0.003| Loss:1.4068| Top-1:96.696| Top-5:99.770
+Top-1:75.690| Top-5:93.450
+EPOCH TIME: 5.623692035675049
+Epoch:194| Time(data):0.000| Time(train):0.003| Loss:1.4025| Top-1:96.704| Top-5:99.776
+Top-1:75.620| Top-5:93.360
+EPOCH TIME: 5.64417839050293
+Epoch:195| Time(data):0.000| Time(train):0.003| Loss:1.3957| Top-1:96.688| Top-5:99.772
+Top-1:75.610| Top-5:93.420
+EPOCH TIME: 5.656080007553101
+Epoch:196| Time(data):0.000| Time(train):0.003| Loss:1.3946| Top-1:96.834| Top-5:99.764
+Top-1:75.560| Top-5:93.220
+EPOCH TIME: 5.648138761520386
+Epoch:197| Time(data):0.000| Time(train):0.003| Loss:1.3911| Top-1:96.762| Top-5:99.768
+Top-1:75.680| Top-5:93.130
+EPOCH TIME: 5.632414102554321
+Epoch:198| Time(data):0.000| Time(train):0.003| Loss:1.3809| Top-1:96.918| Top-5:99.776
+Top-1:75.690| Top-5:93.330
+EPOCH TIME: 5.702308416366577
+Epoch:199| Time(data):0.000| Time(train):0.003| Loss:1.3841| Top-1:96.868| Top-5:99.746
+Top-1:75.820| Top-5:93.390
+EPOCH TIME: 5.645516872406006
+Epoch:200| Time(data):0.000| Time(train):0.003| Loss:1.3788| Top-1:96.888| Top-5:99.766
+Top-1:75.340| Top-5:93.350
+EPOCH TIME: 5.6555869579315186
+Epoch:201| Time(data):0.000| Time(train):0.003| Loss:1.3711| Top-1:96.936| Top-5:99.792
+Top-1:75.760| Top-5:93.260
+EPOCH TIME: 5.61979079246521
+Epoch:202| Time(data):0.000| Time(train):0.003| Loss:1.3708| Top-1:96.976| Top-5:99.758
+Top-1:75.740| Top-5:93.150
+EPOCH TIME: 5.629977464675903
+Epoch:203| Time(data):0.000| Time(train):0.003| Loss:1.3642| Top-1:97.134| Top-5:99.808
+Top-1:75.700| Top-5:93.260
+EPOCH TIME: 5.642139434814453
+Epoch:204| Time(data):0.000| Time(train):0.003| Loss:1.3688| Top-1:97.060| Top-5:99.790
+Top-1:75.580| Top-5:93.220
+EPOCH TIME: 5.633996486663818
+Epoch:205| Time(data):0.000| Time(train):0.003| Loss:1.3578| Top-1:97.218| Top-5:99.790
+Top-1:75.690| Top-5:93.090
+EPOCH TIME: 5.639808654785156
+Epoch:206| Time(data):0.000| Time(train):0.003| Loss:1.3601| Top-1:97.148| Top-5:99.784
+Top-1:75.840| Top-5:93.470
+EPOCH TIME: 5.67936372756958
+Epoch:207| Time(data):0.000| Time(train):0.003| Loss:1.3512| Top-1:97.144| Top-5:99.812
+Top-1:75.660| Top-5:93.320
+EPOCH TIME: 5.653061389923096
+Epoch:208| Time(data):0.000| Time(train):0.003| Loss:1.3490| Top-1:97.356| Top-5:99.822
+Top-1:75.800| Top-5:93.110
+EPOCH TIME: 5.647108316421509
+Epoch:209| Time(data):0.000| Time(train):0.003| Loss:1.3474| Top-1:97.224| Top-5:99.794
+Top-1:75.600| Top-5:93.340
+EPOCH TIME: 5.654790878295898
+Epoch:210| Time(data):0.000| Time(train):0.003| Loss:1.3441| Top-1:97.210| Top-5:99.826
+Top-1:75.420| Top-5:93.270
+EPOCH TIME: 5.660628080368042
+Epoch:211| Time(data):0.000| Time(train):0.003| Loss:1.3207| Top-1:97.492| Top-5:99.830
+Top-1:75.700| Top-5:93.320
+EPOCH TIME: 5.629833221435547
+Epoch:212| Time(data):0.000| Time(train):0.003| Loss:1.3204| Top-1:97.484| Top-5:99.830
+Top-1:75.610| Top-5:93.330
+EPOCH TIME: 5.639456272125244
+Epoch:213| Time(data):0.000| Time(train):0.003| Loss:1.3130| Top-1:97.564| Top-5:99.836
+Top-1:75.700| Top-5:93.290
+EPOCH TIME: 5.616681337356567
+Epoch:214| Time(data):0.000| Time(train):0.003| Loss:1.3138| Top-1:97.542| Top-5:99.816
+Top-1:75.650| Top-5:93.290
+EPOCH TIME: 5.655700445175171
+Epoch:215| Time(data):0.000| Time(train):0.003| Loss:1.3120| Top-1:97.448| Top-5:99.818
+Top-1:75.670| Top-5:93.150
+EPOCH TIME: 5.659900903701782
+Epoch:216| Time(data):0.000| Time(train):0.003| Loss:1.3136| Top-1:97.488| Top-5:99.804
+Top-1:75.730| Top-5:93.240
+EPOCH TIME: 5.639237880706787
+Epoch:217| Time(data):0.000| Time(train):0.003| Loss:1.3133| Top-1:97.536| Top-5:99.828
+Top-1:75.630| Top-5:93.280
+EPOCH TIME: 5.640721082687378
+Epoch:218| Time(data):0.000| Time(train):0.003| Loss:1.3140| Top-1:97.562| Top-5:99.826
+Top-1:75.800| Top-5:93.270
+EPOCH TIME: 5.666326284408569
+Epoch:219| Time(data):0.000| Time(train):0.003| Loss:1.3085| Top-1:97.684| Top-5:99.834
+Top-1:75.750| Top-5:93.240
+EPOCH TIME: 5.676981449127197
+Epoch:220| Time(data):0.000| Time(train):0.003| Loss:1.3120| Top-1:97.598| Top-5:99.842
+Top-1:75.860| Top-5:93.210
+EPOCH TIME: 5.616425514221191
+Epoch:221| Time(data):0.000| Time(train):0.003| Loss:1.3084| Top-1:97.606| Top-5:99.828
+Top-1:75.740| Top-5:93.310
+EPOCH TIME: 5.642816781997681
+Epoch:222| Time(data):0.000| Time(train):0.003| Loss:1.3120| Top-1:97.606| Top-5:99.842
+Top-1:75.670| Top-5:93.290
+EPOCH TIME: 5.649526119232178
+Epoch:223| Time(data):0.000| Time(train):0.003| Loss:1.3104| Top-1:97.532| Top-5:99.852
+Top-1:75.590| Top-5:93.190
+EPOCH TIME: 5.648593425750732
+Epoch:224| Time(data):0.000| Time(train):0.003| Loss:1.3101| Top-1:97.562| Top-5:99.824
+Top-1:75.790| Top-5:93.240
+EPOCH TIME: 5.655601978302002
+Epoch:225| Time(data):0.000| Time(train):0.003| Loss:1.3099| Top-1:97.590| Top-5:99.828
+Top-1:75.610| Top-5:93.210
+EPOCH TIME: 5.704235076904297
+Epoch:226| Time(data):0.000| Time(train):0.003| Loss:1.3096| Top-1:97.572| Top-5:99.842
+Top-1:75.710| Top-5:93.190
+EPOCH TIME: 5.627393484115601
+Epoch:227| Time(data):0.000| Time(train):0.003| Loss:1.3053| Top-1:97.642| Top-5:99.848
+Top-1:75.680| Top-5:93.170
+EPOCH TIME: 5.650470018386841
+Epoch:228| Time(data):0.000| Time(train):0.003| Loss:1.3070| Top-1:97.606| Top-5:99.828
+Top-1:75.530| Top-5:93.200
+EPOCH TIME: 5.647938966751099
+Epoch:229| Time(data):0.000| Time(train):0.003| Loss:1.3080| Top-1:97.660| Top-5:99.822
+Top-1:75.760| Top-5:93.230
+EPOCH TIME: 5.586052179336548
+Epoch:230| Time(data):0.000| Time(train):0.003| Loss:1.3067| Top-1:97.568| Top-5:99.830
+Top-1:75.820| Top-5:93.260
+EPOCH TIME: 5.649173974990845
+Epoch:231| Time(data):0.000| Time(train):0.003| Loss:1.3064| Top-1:97.636| Top-5:99.820
+Top-1:75.730| Top-5:93.230
+EPOCH TIME: 5.650324583053589
+Epoch:232| Time(data):0.000| Time(train):0.003| Loss:1.3034| Top-1:97.678| Top-5:99.864
+Top-1:75.750| Top-5:93.220
+EPOCH TIME: 5.660233974456787
+Epoch:233| Time(data):0.000| Time(train):0.003| Loss:1.3048| Top-1:97.586| Top-5:99.816
+Top-1:75.820| Top-5:93.280
+EPOCH TIME: 5.653179883956909
+Epoch:234| Time(data):0.000| Time(train):0.003| Loss:1.3047| Top-1:97.650| Top-5:99.832
+Top-1:75.580| Top-5:93.190
+EPOCH TIME: 5.63505220413208
+Epoch:235| Time(data):0.000| Time(train):0.003| Loss:1.3053| Top-1:97.602| Top-5:99.832
+Top-1:75.820| Top-5:93.300
+EPOCH TIME: 5.649210453033447
+Epoch:236| Time(data):0.000| Time(train):0.003| Loss:1.3064| Top-1:97.610| Top-5:99.842
+Top-1:75.880| Top-5:93.200
+EPOCH TIME: 5.705173492431641
+Epoch:237| Time(data):0.000| Time(train):0.003| Loss:1.3036| Top-1:97.588| Top-5:99.818
+Top-1:75.700| Top-5:93.180
+EPOCH TIME: 5.64974570274353
+Epoch:238| Time(data):0.000| Time(train):0.003| Loss:1.3038| Top-1:97.592| Top-5:99.834
+Top-1:75.790| Top-5:93.150
+EPOCH TIME: 5.64589786529541
+Epoch:239| Time(data):0.000| Time(train):0.003| Loss:1.3007| Top-1:97.630| Top-5:99.814
+Top-1:75.810| Top-5:93.260
+EPOCH TIME: 5.63949728012085
+Epoch:240| Time(data):0.000| Time(train):0.003| Loss:1.2999| Top-1:97.692| Top-5:99.852
+Top-1:75.800| Top-5:93.240
+EPOCH TIME: 5.611375093460083
+[31m[EVAL] Best accuracy:75.98999786376953[0m
+[1;34mwandb[0m: 🚀 View run [33mlogit_stand/KD + logit stand, resnet32x4/resnet8x4, cifar100[0m at: [34mhttps://wandb.ai/y4umeng-columbia-university/logit_stand/runs/stn8njxz[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20241226_230256-stn8njxz/logs[0m

@@ -34,3 +34,4 @@ wandb
 src/output/
 data/
 src/*.out
+mdistiller/

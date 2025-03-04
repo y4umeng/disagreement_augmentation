@@ -1,0 +1,9 @@
+EXPERIMENT:
+  NAME: "resnet32x4_resnet8x4_da"
+  TAG: "kd,resnet32x4,resnet8x4"
+  PROJECT: "da_final"
+  DA: True
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "resnet32x4"
+  STUDENT: "resnet8x4"

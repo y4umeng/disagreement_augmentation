@@ -1,9 +1,8 @@
 import torch
+import copy
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.transforms as transforms
-import torchvision
-import matplotlib.pyplot as plt
 from ._base import Distiller
 
 def normalize(logit):
@@ -28,7 +27,7 @@ class AugmentedDistiller(Distiller):
         self.cfg = cfg
         self.logit_stand = cfg.EXPERIMENT.LOGIT_STAND 
 
-    def DA(self, images):
+    def DA_old(self, images):
         images.requires_grad_(True)
         optimizer = torch.optim.Adam([images], lr=self.cfg.DA.LR)
         for _ in range(self.cfg.DA.EPOCHS):
@@ -43,6 +42,22 @@ class AugmentedDistiller(Distiller):
             optimizer.zero_grad()
         return images.clone().detach()
     
+    def DA(self, images):
+        fake_student = copy.deepcopy(self.student)
+        images.requires_grad = True
+        optimizer = torch.optim.Adam([images], lr=self.cfg.DA.LR)
+        for _ in range(self.cfg.DA.EPOCHS):
+            logits_student, _ = fake_student(images)
+            logits_teacher, _ = self.teacher(images)
+            loss = -1 * kd_loss(
+                        logits_student, logits_teacher, 1, self.logit_stand
+                    )
+            # loss = -1 * F.mse_loss(logits_student, logits_teacher)
+            loss.backward()
+            optimizer.step()
+            optimizer.zero_grad()
+        return images.detach().clone()
+        
 
     def _fgsm_attack(self, image, epsilon, data_grad):
         # Collect the element-wise sign of the data gradient

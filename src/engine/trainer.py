@@ -19,9 +19,10 @@ from .utils import (
     log_msg,
 )
 
-def create_unique_log_path(prefix, experiment_name):
+def create_unique_log_path(prefix, experiment_name, resume):
     # Initial log path
     base_path = os.path.join(prefix, experiment_name)
+    if resume: return base_path
     log_path = base_path
     counter = 1
 
@@ -35,7 +36,7 @@ def create_unique_log_path(prefix, experiment_name):
     return log_path
 
 class BaseTrainer(object):
-    def __init__(self, experiment_name, distiller, train_loader, val_loader, cfg):
+    def __init__(self, experiment_name, distiller, train_loader, val_loader, cfg, resume):
         self.cfg = cfg
         self.distiller = distiller
         self.train_loader = train_loader
@@ -43,9 +44,8 @@ class BaseTrainer(object):
         self.optimizer = self.init_optimizer(cfg)
         self.best_acc = -1
 
-        # username = getpass.getuser()
         # init loggers
-        self.log_path = create_unique_log_path(cfg.LOG.PREFIX, experiment_name)
+        self.log_path = create_unique_log_path(cfg.LOG.PREFIX, experiment_name, resume)
         if not os.path.exists(self.log_path):
             os.makedirs(self.log_path)
         self.tf_writer = SummaryWriter(os.path.join(self.log_path, "train.events"))
@@ -92,11 +92,16 @@ class BaseTrainer(object):
     def train(self, resume=False):
         epoch = 1
         if resume:
-            state = load_checkpoint(os.path.join(self.log_path, "latest"))
-            epoch = state["epoch"] + 1
-            self.distiller.load_state_dict(state["model"])
-            self.optimizer.load_state_dict(state["optimizer"])
-            self.best_acc = state["best_acc"]
+            checkpoint_path = os.path.join(self.log_path, "latest")
+            if os.path.exists(checkpoint_path):
+                state = load_checkpoint(checkpoint_path)
+                epoch = state["epoch"] + 1
+                self.distiller.load_state_dict(state["model"])
+                self.optimizer.load_state_dict(state["optimizer"])
+                self.best_acc = state["best_acc"]
+                print(f"Resuming training at epoch {epoch} from checkpoint {checkpoint_path}")
+            else:
+                print(f"Can't resume: no checkpoint was found at {checkpoint_path}")
         while epoch < self.cfg.SOLVER.EPOCHS + 1:
             self.train_epoch(epoch)
             epoch += 1

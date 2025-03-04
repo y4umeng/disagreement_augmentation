@@ -1,0 +1,13 @@
+EXPERIMENT:
+  NAME: "vgg13_MobileNetV2_da"
+  TAG: "kd,vgg13,MobileNetV2"
+  PROJECT: "da_final"
+  DA: True
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "vgg13"
+  STUDENT: "MobileNetV2"
+DA:
+  LR: 0.00192
+  EPOCHS: 1
+  PROB: 0.268

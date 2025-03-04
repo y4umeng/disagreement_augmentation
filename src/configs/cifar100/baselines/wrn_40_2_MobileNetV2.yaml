@@ -1,0 +1,8 @@
+EXPERIMENT:
+  NAME: "wrn_40_2_MobileNetV2_base"
+  TAG: "kd,wrn_40_2,MobileNetV2"
+  PROJECT: "da_final"
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "wrn_40_2"
+  STUDENT: "MobileNetV2"

@@ -1,0 +1,13 @@
+EXPERIMENT:
+  NAME: "resnet56_resnet20_da"
+  TAG: "kd,resnet56,resnet20"
+  PROJECT: "da_final"
+  DA: True
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "resnet56"
+  STUDENT: "resnet20"
+DA:
+  LR: 0.00192
+  EPOCHS: 1
+  PROB: 0.268

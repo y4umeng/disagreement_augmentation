@@ -1,0 +1,8 @@
+EXPERIMENT:
+  NAME: "ResNet50_MobileNetV2_base"
+  TAG: "kd,ResNet50,MobileNetV2"
+  PROJECT: "da_final"
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "ResNet50"
+  STUDENT: "MobileNetV2"

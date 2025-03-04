@@ -1,0 +1,8 @@
+EXPERIMENT:
+  NAME: "resnet56_resnet20_base"
+  TAG: "kd,resnet56,resnet20"
+  PROJECT: "da_final"
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "resnet56"
+  STUDENT: "resnet20"

@@ -1,0 +1,9 @@
+EXPERIMENT:
+  NAME: "vgg13_vgg8_da"
+  TAG: "kd,vgg13,vgg8"
+  PROJECT: "da_final"
+  DA: True
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "vgg13"
+  STUDENT: "vgg8"

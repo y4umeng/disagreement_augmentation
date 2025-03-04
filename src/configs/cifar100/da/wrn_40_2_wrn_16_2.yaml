@@ -1,0 +1,9 @@
+EXPERIMENT:
+  NAME: "wrn_40_2_wrn_16_2_da"
+  TAG: "kd,wrn_40_2,wrn_16_2"
+  PROJECT: "da_final"
+  DA: True
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "wrn_40_2"
+  STUDENT: "wrn_16_2"

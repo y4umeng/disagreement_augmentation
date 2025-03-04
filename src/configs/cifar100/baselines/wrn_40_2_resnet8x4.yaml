@@ -1,0 +1,8 @@
+EXPERIMENT:
+  NAME: "wrn_40_2_resnet8x4_base"
+  TAG: "kd,wrn_40_2,resnet8x4"
+  PROJECT: "da_final"
+DISTILLER:
+  TYPE: "KD"
+  TEACHER: "wrn_40_2"
+  STUDENT: "resnet8x4"

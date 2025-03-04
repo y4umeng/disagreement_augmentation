@@ -1,0 +1,123 @@
+nohup: ignoring input
+wandb: Using wandb-core as the SDK backend. Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: y4umeng (y4umeng-columbia-university). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.18.5
+wandb: Run data is saved locally in /home/yw3809/Projects/disagreement_augmentation/src/wandb/run-20250304_133933-7l856ajk
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run da_final/resnet110_resnet20_da
+wandb: ⭐️ View project at https://wandb.ai/y4umeng-columbia-university/da_final
+wandb: 🚀 View run at https://wandb.ai/y4umeng-columbia-university/da_final/runs/7l856ajk
+/home/yw3809/Projects/disagreement_augmentation/src/../src/engine/utils.py:106: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(f, map_location="cpu")
+[36m[INFO] CONFIG:
+DA:
+  EPOCHS: 1
+  LR: 0.00192
+  PROB: 0.268
+DATASET:
+  NUM_WORKERS: 4
+  TEST:
+    BATCH_SIZE: 64
+  TYPE: cifar100
+DISTILLER:
+  STUDENT: resnet20
+  TEACHER: resnet110
+  TYPE: KD
+EXPERIMENT:
+  DA: true
+  FGSM: false
+  LOGIT_STAND: false
+  NAME: resnet110_resnet20_da
+  PROJECT: da_final
+  TAG: kd,resnet110,resnet20
+KD:
+  LOSS:
+    CE_WEIGHT: 0.1
+    KD_WEIGHT: 9
+  TEMPERATURE: 2
+LOG:
+  PREFIX: ./output
+  SAVE_CHECKPOINT_FREQ: 40
+  TENSORBOARD_FREQ: 500
+  WANDB: true
+SOLVER:
+  BATCH_SIZE: 64
+  EPOCHS: 240
+  LR: 0.05
+  LR_DECAY_RATE: 0.1
+  LR_DECAY_STAGES:
+  - 150
+  - 180
+  - 210
+  MOMENTUM: 0.9
+  TRAINER: base
+  TYPE: SGD
+  WEIGHT_DECAY: 0.0005
+[0m
+Files already downloaded and verified
+Files already downloaded and verified
+[36m[INFO] Loading teacher model[0m
+Epoch:1| Time(data):0.000| Time(train):0.011| Loss:121.5710| Top-1:5.006| Top-5:19.080
+Top-1:8.520| Top-5:29.060
+EPOCH TIME: 9.74857211112976
+Epoch:2| Time(data):0.000| Time(train):0.010| Loss:105.0047| Top-1:12.944| Top-5:36.774
+Top-1:16.380| Top-5:43.240
+EPOCH TIME: 9.648540019989014
+Epoch:3| Time(data):0.000| Time(train):0.010| Loss:92.8310| Top-1:19.758| Top-5:47.928
+Top-1:21.570| Top-5:50.030
+EPOCH TIME: 9.586743354797363
+Epoch:4| Time(data):0.000| Time(train):0.010| Loss:82.5257| Top-1:25.932| Top-5:56.642
+Top-1:24.460| Top-5:55.160
+EPOCH TIME: 9.536688089370728
+Epoch:5| Time(data):0.000| Time(train):0.010| Loss:74.4769| Top-1:30.738| Top-5:63.198
+Top-1:31.560| Top-5:64.210
+EPOCH TIME: 9.514886617660522
+Epoch:6| Time(data):0.000| Time(train):0.010| Loss:68.2578| Top-1:34.910| Top-5:67.828
+Top-1:35.630| Top-5:67.160
+EPOCH TIME: 9.302088260650635
+Epoch:7| Time(data):0.000| Time(train):0.010| Loss:63.9403| Top-1:38.166| Top-5:70.890
+Top-1:35.140| Top-5:67.370
+EPOCH TIME: 9.584214448928833
+Epoch:8| Time(data):0.000| Time(train):0.010| Loss:60.7959| Top-1:39.930| Top-5:72.934
+Top-1:36.140| Top-5:68.060
+EPOCH TIME: 9.305065870285034
+Epoch:9| Time(data):0.000| Time(train):0.010| Loss:58.2016| Top-1:41.920| Top-5:74.660
+Top-1:37.840| Top-5:70.730
+EPOCH TIME: 9.479099988937378
+Epoch:10| Time(data):0.000| Time(train):0.010| Loss:56.4467| Top-1:43.434| Top-5:75.682
+Top-1:41.930| Top-5:74.190
+EPOCH TIME: 9.356043100357056
+Epoch:11| Time(data):0.000| Time(train):0.010| Loss:54.7767| Top-1:44.792| Top-5:76.740
+Top-1:41.570| Top-5:73.090
+EPOCH TIME: 9.329000473022461
+Epoch:12| Time(data):0.000| Time(train):0.011| Loss:53.8528| Top-1:45.466| Top-5:77.736
+Top-1:41.950| Top-5:73.760
+EPOCH TIME: 9.669079303741455
+Epoch:13| Time(data):0.000| Time(train):0.010| Loss:52.7018| Top-1:46.380| Top-5:78.104
+Top-1:46.390| Top-5:77.710
+EPOCH TIME: 9.56603217124939
+Epoch:14| Time(data):0.000| Time(train):0.011| Loss:52.1092| Top-1:46.538| Top-5:78.706
+Top-1:45.940| Top-5:77.260
+EPOCH TIME: 9.927778482437134
+Epoch:15| Time(data):0.000| Time(train):0.010| Loss:51.0821| Top-1:47.428| Top-5:79.318
+Top-1:42.350| Top-5:72.950
+EPOCH TIME: 9.359702825546265
+Epoch:16| Time(data):0.000| Time(train):0.010| Loss:50.4843| Top-1:47.878| Top-5:79.740
+Top-1:44.910| Top-5:75.850
+EPOCH TIME: 9.527494192123413
+Epoch:17| Time(data):0.000| Time(train):0.010| Loss:49.6409| Top-1:48.630| Top-5:80.176
+Top-1:47.770| Top-5:78.480
+EPOCH TIME: 9.169620752334595
+Epoch:18| Time(data):0.000| Time(train):0.010| Loss:49.0484| Top-1:49.008| Top-5:80.286
+Top-1:46.580| Top-5:77.500
+EPOCH TIME: 9.412590265274048
+Epoch:19| Time(data):0.000| Time(train):0.010| Loss:48.7335| Top-1:48.918| Top-5:80.802
+Top-1:44.510| Top-5:77.090
+EPOCH TIME: 9.705397844314575
+Epoch:20| Time(data):0.000| Time(train):0.010| Loss:48.4996| Top-1:49.570| Top-5:80.678
+Top-1:45.600| Top-5:77.100
+EPOCH TIME: 9.460221529006958
+Epoch:21| Time(data):0.000| Time(train):0.011| Loss:47.7882| Top-1:50.362| Top-5:81.294
+Top-1:45.720| Top-5:75.940
+EPOCH TIME: 9.965179443359375
+Epoch:22| Time(data):0.000| Time(train):0.011| Loss:47.4983| Top-1:50.212| Top-5:81.388

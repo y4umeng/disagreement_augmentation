@@ -29,6 +29,14 @@ class KD(AugmentedDistiller):
         loss_kd = self.kd_loss_weight * kd_loss(
             logits_student, logits_teacher, self.temperature, self.logit_stand
         )
+        
+        if torch.isnan(loss_ce):
+            print("NAN CE LOSS", flush=True)
+            raise ValueError()
+        if torch.isnan(loss_kd):
+            print("NAN KD LOSS", flush=True)
+            raise ValueError()
+        
         losses_dict = {
             "loss_ce": loss_ce,
             "loss_kd": loss_kd,
